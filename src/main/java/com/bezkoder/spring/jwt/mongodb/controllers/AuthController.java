@@ -95,9 +95,9 @@ public class AuthController {
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+			Role vecinoRole = roleRepository.findByName(ERole.ROLE_VECINO)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-			roles.add(userRole);
+			roles.add(vecinoRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
@@ -107,16 +107,16 @@ public class AuthController {
 					roles.add(adminRole);
 
 					break;
-				case "mod":
-					Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+				case "portero":
+					Role porteroRole = roleRepository.findByName(ERole.ROLE_PORTERO)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(modRole);
+					roles.add(porteroRole);
 
 					break;
 				default:
-					Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+					Role vecinoRole = roleRepository.findByName(ERole.ROLE_VECINO)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(userRole);
+					roles.add(vecinoRole);
 				}
 			});
 		}

@@ -6,6 +6,7 @@ import com.bezkoder.spring.jwt.mongodb.payload.request.Anuncio;
 import com.bezkoder.spring.jwt.mongodb.services.AnuncioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.bezkoder.spring.jwt.mongodb.models.AnuncioDto;
 
@@ -41,6 +42,7 @@ public class AnuncioController {
     //Mapeo POST crear usuario => devuelve anuncio creado
 
     @PostMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Anuncio> save(@RequestBody AnuncioDto dto) throws NullContenidoException {
         return ResponseEntity.ok(anuncioService.save(dto));
     }
@@ -48,12 +50,14 @@ public class AnuncioController {
     //Mapeo PUT update usuario
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Anuncio> update(@PathVariable("id") int id, @RequestBody AnuncioDto dto) throws ResourceNotFoundException {
         return ResponseEntity.ok(anuncioService.update(id,dto));
     }
 
     //Mapeo DELETE borrar anuncio
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Anuncio> delete(@PathVariable("id") int id) throws ResourceNotFoundException {
         return ResponseEntity.ok(anuncioService.delete(id));
     }
