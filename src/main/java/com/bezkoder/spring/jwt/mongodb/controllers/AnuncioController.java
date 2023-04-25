@@ -48,7 +48,7 @@ public class AnuncioController {
     //Mapeo POST crear usuario => devuelve anuncio creado
 
     @PostMapping()
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('VECINO')")
     public ResponseEntity<Anuncio> save(@RequestBody AnuncioDto dto) throws NullContenidoException {
         return ResponseEntity.ok(anuncioService.save(dto));
     }
