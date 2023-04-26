@@ -47,6 +47,12 @@ public class VecinoController {
     public ResponseEntity<User> create(@RequestBody User user) throws NullContenidoException {
         return ResponseEntity.ok(vecinoService.crearVecino(user));
     }
+    // Mapeo POST => Crea un nuevo Admin
+    @PostMapping("/admin")
+    public ResponseEntity<User> createAdmin(@RequestBody User user) throws NullContenidoException {
+        return ResponseEntity.ok(vecinoService.crearAdmin(user));
+    }
+
 
     // Mapeo PUT => Actualiza un vecino existente por ID
     @PutMapping("/{id}")

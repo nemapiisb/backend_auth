@@ -68,6 +68,22 @@ public class VecinoService {
         return userRepository.save(user);
     }
 
+    // Crear Usuario Admin
+    public User crearAdmin(User dto) throws NullContenidoException {
+        if (dto.getUsername().isEmpty())
+            throw new NullContenidoException("El contenido no puede estar vacío");
+
+        String id = dto.getId();
+        User user = new User(dto.getUsername(), dto.getEmail(), dto.getPassword());
+        Set<Role> roles = new HashSet<>(); // Crear un nuevo conjunto de Roles
+        Optional<Role> adminRole = roleRepository.findByName(ERole.ROLE_ADMIN); // Obtener el rol existente ROLE_VECINO desde RoleRepository
+        if (adminRole.isPresent()) { // Verificar si el rol existe
+            roles.add(adminRole.get()); // Agregar el rol existente al conjunto
+            user.setRoles(roles); // Pasar el conjunto de Roles al método setRoles() en la clase User
+        }
+        return userRepository.save(user);
+    }
+
 
 
 
