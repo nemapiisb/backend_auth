@@ -7,6 +7,7 @@ public class AnuncioDto {
     private String fecha;
 
     private EAnuncioCategoria categoria;
+    private String userId;
 
     public AnuncioDto() {
     }
@@ -18,6 +19,15 @@ public class AnuncioDto {
         this.fecha = systemDate.toString();
         //Asignamos tipo anuncio
         this.categoria=categoria;
+    }
+    public AnuncioDto(String contenido, EAnuncioCategoria categoria, String userId) {
+        this.contenido = contenido;
+        //Asignamos fecha sistema como fecha de creación del anuncio
+        Date systemDate= new Date();
+        this.fecha = systemDate.toString();
+        //Asignamos tipo anuncio
+        this.categoria=categoria;
+        this.userId = userId;
     }
 
     public AnuncioDto(String contenido) {
@@ -32,9 +42,15 @@ public class AnuncioDto {
     public String getContenido() {
         return contenido;
     }
+    public String getUserId() {
+        return userId;
+    }
 
     public void setContenido(String contenido) {
         this.contenido = contenido;
+    }
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFecha() {

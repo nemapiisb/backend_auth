@@ -14,6 +14,7 @@ public class Anuncio {
     private String fecha;
 
     private EAnuncioCategoria categoria;
+    private String userId;
     public Anuncio() {
     }
 
@@ -32,6 +33,15 @@ public class Anuncio {
         this.fecha = systemDate.toString();
         this.categoria=categoria;
     }
+    public Anuncio(int id, String contenido,EAnuncioCategoria categoria, String userId) {
+        this.id = id;
+        this.contenido = contenido;
+        //Asignamos fecha de creación del anuncio con la fecha del sistema en ese momento
+        Date systemDate= new Date();
+        this.fecha = systemDate.toString();
+        this.categoria=categoria;
+        this.userId = userId;
+    }
 
 
     public int getId() {
@@ -46,10 +56,17 @@ public class Anuncio {
         return contenido;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
 
+    public void setIdUser(String userId) {
+        this.userId = userId;
+    }
     public String getFecha() {
         return fecha;
     }

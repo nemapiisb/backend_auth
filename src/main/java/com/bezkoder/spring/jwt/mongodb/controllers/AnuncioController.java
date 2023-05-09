@@ -56,14 +56,14 @@ public class AnuncioController {
     //Mapeo PUT update usuario
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Anuncio> update(@PathVariable("id") int id, @RequestBody AnuncioDto dto) throws ResourceNotFoundException {
         return ResponseEntity.ok(anuncioService.update(id,dto));
     }
 
     //Mapeo DELETE borrar anuncio
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Anuncio> delete(@PathVariable("id") int id) throws ResourceNotFoundException {
         return ResponseEntity.ok(anuncioService.delete(id));
     }
