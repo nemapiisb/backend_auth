@@ -40,7 +40,7 @@ public class AnuncioService {
             throw new NullContenidoException("El contenido no puede estar vacio");
 
         int id=autoincrement();
-        Anuncio anuncio= new Anuncio(id,dto.getContenido(),dto.getCategoria(),dto.getUserId());
+        Anuncio anuncio= new Anuncio(id,dto.getContenido(),dto.getCategoria(),dto.getUserId(), dto.getFechaReserva());
         return anuncioRepository.save(anuncio);
     }
 

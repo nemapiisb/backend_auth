@@ -12,6 +12,7 @@ public class Anuncio {
     private int id;
     private String contenido;
     private String fecha;
+    private String fechaReserva;
 
     private EAnuncioCategoria categoria;
     private String userId;
@@ -42,6 +43,17 @@ public class Anuncio {
         this.categoria=categoria;
         this.userId = userId;
     }
+    //constructor para reservas
+    public Anuncio(int id, String contenido,EAnuncioCategoria categoria, String userId, String fechaReserva) {
+        this.id = id;
+        this.contenido = contenido;
+        //Asignamos fecha de creación del anuncio con la fecha del sistema en ese momento
+        Date systemDate= new Date();
+        this.fecha = systemDate.toString();
+        this.categoria=categoria;
+        this.userId = userId;
+        this.fechaReserva = fechaReserva;
+    }
 
 
     public int getId() {
@@ -59,6 +71,9 @@ public class Anuncio {
     public String getUserId() {
         return userId;
     }
+    public String getFechaReserva() {
+        return fechaReserva;
+    }
 
     public void setContenido(String contenido) {
         this.contenido = contenido;
@@ -67,6 +82,10 @@ public class Anuncio {
     public void setIdUser(String userId) {
         this.userId = userId;
     }
+    public void setFechaReserva(String fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+
     public String getFecha() {
         return fecha;
     }

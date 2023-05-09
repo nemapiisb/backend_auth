@@ -8,6 +8,7 @@ public class AnuncioDto {
 
     private EAnuncioCategoria categoria;
     private String userId;
+    private String fechaReserva;
 
     public AnuncioDto() {
     }
@@ -30,6 +31,17 @@ public class AnuncioDto {
         this.userId = userId;
     }
 
+    public AnuncioDto(String contenido, EAnuncioCategoria categoria, String userId, String fechaReserva) {
+        this.contenido = contenido;
+        //Asignamos fecha sistema como fecha de creación del anuncio
+        Date systemDate= new Date();
+        this.fecha = systemDate.toString();
+        //Asignamos tipo anuncio
+        this.categoria=categoria;
+        this.userId = userId;
+        this.fechaReserva = fechaReserva;
+    }
+
     public AnuncioDto(String contenido) {
         this.contenido = contenido;
         //Asignamos fecha sistema como fecha de creación del anuncio
@@ -45,12 +57,18 @@ public class AnuncioDto {
     public String getUserId() {
         return userId;
     }
+    public String getFechaReserva() {
+        return fechaReserva;
+    }
 
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+    public void setFechaReserva(String fechaReserva) {
+        this.fechaReserva = fechaReserva;
     }
 
     public String getFecha() {
